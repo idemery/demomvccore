@@ -7,10 +7,10 @@ ENV ASPNETCORE_URLS=http://*:80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["demomvccore.csproj", "./"]
-RUN dotnet restore "demomvccore.csproj"
+COPY ["demomvccore/demomvccore.csproj", "./"]
+RUN dotnet restore "demomvccore/demomvccore.csproj"
 COPY . .
-#WORKDIR "/src/demomvccore"
+WORKDIR "/src/demomvccore"
 RUN dotnet build "demomvccore.csproj" -c Release -o /app/build
 
 FROM build AS publish
