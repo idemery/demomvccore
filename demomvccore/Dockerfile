@@ -6,8 +6,8 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["demomvccore/demomvccore.csproj", ""]
-RUN dotnet restore "demomvccore/demomvccore.csproj"
+COPY ["demomvccore.csproj", "./"]
+RUN dotnet restore "demomvccore.csproj"
 COPY . .
 WORKDIR "/src/demomvccore"
 RUN dotnet build "demomvccore.csproj" -c Release -o /app/build
